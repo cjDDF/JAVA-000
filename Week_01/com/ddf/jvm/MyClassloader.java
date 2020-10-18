@@ -43,11 +43,9 @@ public class MyClassloader extends ClassLoader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte) (255 - bytes[i]);
         }
-
         return defineClass(name, bytes, 0, bytes.length);
     }
 
