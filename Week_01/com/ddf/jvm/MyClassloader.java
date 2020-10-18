@@ -36,7 +36,7 @@ public class MyClassloader extends ClassLoader {
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        File file = new File("Week_01/com/ddf/jvm/Hello.xlass");
+        File file = new File("Week_01/Hello.xlass");
         byte[] bytes = null;
         try {
             bytes = getClassFileBytes(file);
