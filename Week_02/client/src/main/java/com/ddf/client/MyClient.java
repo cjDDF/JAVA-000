@@ -13,19 +13,22 @@ public class MyClient {
     public static void main(String[] args) {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("http://localhost:8801/");
+        CloseableHttpResponse response = null;
         try {
-            CloseableHttpResponse response = httpClient.execute(httpGet);
+            response = httpClient.execute(httpGet);
             HttpEntity entity = response.getEntity();
             System.out.println(EntityUtils.toString(entity));
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
+                if (response != null) {
+                    response.close();
+                }
                 httpClient.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
     }
 }
