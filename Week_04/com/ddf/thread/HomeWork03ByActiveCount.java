@@ -1,6 +1,6 @@
 package com.ddf.thread;
 
-public class HomeWork03ByYield {
+public class HomeWork03ByActiveCount {
     private static int result;
 
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class HomeWork03ByYield {
         new Thread(() -> result=sum()).start();
         //获取返回值
         while (Thread.activeCount() > 2) {
-            Thread.yield();
+
         }
 
         System.out.println("异步计算结果为：" + result);
