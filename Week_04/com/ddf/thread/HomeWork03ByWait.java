@@ -5,18 +5,18 @@ public class HomeWork03ByWait {
 
     public static void main(String[] args) throws InterruptedException {
         long start = System.currentTimeMillis();
-        HomeWork03ByWait homeWork03ByNotify = new HomeWork03ByWait();
+        Object obj = new Object();
 
         //异步运行
         new Thread(() -> {
-            synchronized (homeWork03ByNotify) {
+            synchronized (obj) {
                 result = sum();
-                homeWork03ByNotify.notify();
+                obj.notify();
             }
         }).start();
         //获取返回值
-        synchronized (homeWork03ByNotify){
-            homeWork03ByNotify.wait();
+        synchronized (obj){
+            obj.wait();
             System.out.println("异步计算结果为：" + result);
             System.out.println("使用时间：" + (System.currentTimeMillis() - start) + " ms");
         }
