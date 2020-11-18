@@ -1,0 +1,10 @@
+school:
+  class1:
+    students:
+      - name: kk100
+        id: 100
+      - name: kk123
+        id: 123
+  student100:
+    name: kk100
+    id: 100
