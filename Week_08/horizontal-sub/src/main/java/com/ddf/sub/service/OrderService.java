@@ -1,8 +1,9 @@
 package com.ddf.sub.service;
 
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.ddf.sub.entity.OrderEntity;
+import io.shardingsphere.transaction.annotation.ShardingTransactionType;
+import io.shardingsphere.transaction.api.TransactionType;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 订单
@@ -11,8 +12,11 @@ import com.ddf.sub.entity.OrderEntity;
  * @email tataluoke@gmail.com
  * @date 2020-05-27 10:49:05
  */
-public interface OrderService extends IService<OrderEntity> {
+public interface OrderService {
 
 
+    @Transactional
+    @ShardingTransactionType(TransactionType.XA)
+    void insertWithTxXA();
 }
 
