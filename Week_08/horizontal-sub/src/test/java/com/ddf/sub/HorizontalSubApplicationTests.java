@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 class HorizontalSubApplicationTests {
@@ -20,7 +21,9 @@ class HorizontalSubApplicationTests {
 
     @Test
     void contextLoads() {
-
+        List<OrderEntity> list = dao.selectList(null);
+        List<Long> collect = list.stream().map(OrderEntity::getId).collect(Collectors.toList());
+        dao.deleteBatchIds(collect);
     }
 
     @Test
